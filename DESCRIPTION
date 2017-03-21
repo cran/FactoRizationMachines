@@ -1,8 +1,8 @@
 Package: FactoRizationMachines
 Type: Package
 Title: Machine Learning with Higher-Order Factorization Machines
-Version: 0.1
-Date: 2016-12-01
+Version: 0.11
+Date: 2017-03-21
 Author: Julian Knoll
 Maintainer: Julian Knoll <julian.knoll@th-nuernberg.de>
 Description: Implementation of three machine learning approaches: Support Vector Machines (SVM) with a linear kernel, second-order Factorization Machines (FM), and higher-order Factorization Machines (HoFM).
@@ -11,6 +11,6 @@ Imports: Rcpp (>= 0.12.1), methods, Matrix
 LinkingTo: Rcpp
 Suggests: MASS
 NeedsCompilation: yes
-Packaged: 2016-12-01 21:23:31 UTC; Administrator
+Packaged: 2017-03-20 23:41:01 UTC; Administrator
 Repository: CRAN
-Date/Publication: 2016-12-02 10:46:20
+Date/Publication: 2017-03-21 14:53:37 UTC

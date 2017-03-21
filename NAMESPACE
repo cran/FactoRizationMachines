@@ -1,4 +1,4 @@
-useDynLib(FactoRizationMachines)
+useDynLib(FactoRizationMachines, .registration = TRUE, .fixes = "C_")
 importFrom(Rcpp, evalCpp)
 importFrom(methods, as)
 import(Matrix)
