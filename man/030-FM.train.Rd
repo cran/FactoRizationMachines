@@ -12,7 +12,7 @@
   the first element specifies whether linear weights are used (\code{1}) or not (\code{0}),
   the second element specifies the number of parameters factorizing the second-order.
    
-  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"})is supported. 
+  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"}) is supported. 
   Consequently, regularization is suggested in most of the cases.
   Next steps are to implement the Monte Carlo Markov Chain method (\code{"mcmc"}) to simplify regularization.
   Furthermore, the task classifiction (\code{"c"}) will be supported in the future.

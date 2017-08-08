@@ -1,5 +1,6 @@
 \name{FactoRizationMachines}
 \alias{FactoRizationMachines}
+\alias{FactorizationMachines-package}
 \docType{package}
 
 \title{

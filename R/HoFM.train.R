@@ -3,12 +3,9 @@ function(data, target, factors=c(1,10,5), intercept=T, iter=100, regular=0, stde
   
   object=list()
   object$vK=factors
-  if(length(regular)==1) regular=rep(regular,length(factors))
-  object$vLambda=regular
-  length(object$vLambda)=length(factors)
   
-  if(length(factors)>3) warning("HoFM.train only supports up to third-order factors -> parameter factors partly ignored")
+  if(length(factors)>10) warning("HoFM.train only supports up to tenth-order factors -> parameter factors partly ignored")
   
-  return(learn.FM.model(data=data, target=target, intercept=intercept, iter=iter, stdev=stdev, object=object))
+  return(learn.FM.model(data=data, target=target, object=object, intercept=intercept, iter=iter, regular=regular, stdev=stdev))
   
 }

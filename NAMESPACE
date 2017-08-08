@@ -1,6 +1,7 @@
-useDynLib(FactoRizationMachines, .registration = TRUE, .fixes = "C_")
+useDynLib(FactoRizationMachines, .registration = TRUE)
 importFrom(Rcpp, evalCpp)
 importFrom(methods, as)
+importFrom(stats, sd)
 import(Matrix)
 S3method(print, FMmodel)
 S3method(summary, FMmodel)

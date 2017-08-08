@@ -6,24 +6,35 @@
 using namespace Rcpp;
 
 // trainFM
-List trainFM(List j10710k);
-RcppExport SEXP FactoRizationMachines_trainFM(SEXP j10710kSEXP) {
+List trainFM(List j14686k);
+RcppExport SEXP _FactoRizationMachines_trainFM(SEXP j14686kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< List >::type j10710k(j10710kSEXP);
-    rcpp_result_gen = Rcpp::wrap(trainFM(j10710k));
+    Rcpp::traits::input_parameter< List >::type j14686k(j14686kSEXP);
+    rcpp_result_gen = Rcpp::wrap(trainFM(j14686k));
     return rcpp_result_gen;
 END_RCPP
 }
 // predictFM
-NumericVector predictFM(List j10710k);
-RcppExport SEXP FactoRizationMachines_predictFM(SEXP j10710kSEXP) {
+NumericVector predictFM(List j14686k);
+RcppExport SEXP _FactoRizationMachines_predictFM(SEXP j14686kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< List >::type j10710k(j10710kSEXP);
-    rcpp_result_gen = Rcpp::wrap(predictFM(j10710k));
+    Rcpp::traits::input_parameter< List >::type j14686k(j14686kSEXP);
+    rcpp_result_gen = Rcpp::wrap(predictFM(j14686k));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_FactoRizationMachines_trainFM", (DL_FUNC) &_FactoRizationMachines_trainFM, 1},
+    {"_FactoRizationMachines_predictFM", (DL_FUNC) &_FactoRizationMachines_predictFM, 1},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_FactoRizationMachines(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

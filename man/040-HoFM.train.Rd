@@ -11,9 +11,11 @@
   \code{factors} specifies the model parameters of the Factorization Machine:
   the first element specifies whether linear weights are used (\code{1}) or not (\code{0}),
   the second element specifies the number of parameters factorizing the second-order,
-  the third element specifies the number of parameters factorizing the third-order.
+  the third element specifies the number of parameters factorizing the third-order,
+  ...,
+  up to the tenth element specifying the number of parameters factorizing the tenth-order.
    
-  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"})is supported. 
+  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"}) is supported. 
   Consequently, regularization is suggested in most of the cases.
   Next steps are to implement the Monte Carlo Markov Chain method (\code{"mcmc"}) to simplify regularization.
   Furthermore, the task classifiction (\code{"c"}) will be supported in the future.
@@ -36,7 +38,9 @@
     \code{numeric}: vector specifying the number of factors for each considered order:
      the first element specifies whether linear weights are used (\code{1}) or not (\code{0}),
      the second element specifies the number of parameters factorizing the second-order,
-     the third element specifies the number of parameters factorizing the third-order.
+     the third element specifies the number of parameters factorizing the third-order,
+     ...,
+     up to the tenth element specifying the number of parameters factorizing the tenth-order.
   }
   \item{intercept}{
     \code{logical}: specifying whether a global intercept is used (\code{TRUE}) or not (\code{FALSE}).
