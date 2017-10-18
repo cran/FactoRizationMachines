@@ -10,16 +10,12 @@
   
   \code{factors} specifies whether linear weights are used (\code{1}) or not (\code{0}).
   If linear weights are not used \code{intercept} is set to \code{TRUE}.
-   
-  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"}) is supported. 
-  Consequently, regularization is suggested in most of the cases.
-  Next steps are to implement the Monte Carlo Markov Chain method (\code{"mcmc"}) to simplify regularization.
-  Furthermore, the task classifiction (\code{"c"}) will be supported in the future.
+
 }
 
 \usage{
   SVM.train(data, target, factors = 1, intercept = T, 
-  iter = 100, regular = 0, stdev = 0.1)
+  iter = 100, regular = NULL, stdev = 0.1)
 }
 
 
@@ -42,7 +38,8 @@
     \code{integer}: the number of iterations the learning method is applied.
   }
   \item{regular}{
-    \code{numeric}: regularization value for the linear weights.
+    \code{numeric}: regularization value for the linear weights. 
+    If regular is NULL, automatic regularization using Markov Chain Monte Carlo (MCMC) method is applied.
   }
   \item{stdev}{
     \code{numeric}: the standard deviation used to initialize the model parameters.
@@ -55,6 +52,7 @@
 }
 
 \examples{
+\dontrun{
 
 ### Example to illustrate the usage of the method
 ### Data set very small and not sparse, results not representative
@@ -74,24 +72,25 @@ data.test=Boston[-subset,-ncol(Boston)]
 target.test=Boston[-subset,ncol(Boston)]
 
 
-# Predict with linear weights and intercept
+# Predict with linear weights and intercept with MCMC regularization
 model=SVM.train(data.train,target.train)
 
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 
 
-# Predict with linear weights but without intercept
+# Predict with linear weights but without intercept with MCMC regularization
 model=SVM.train(data.train,target.train,intercept=FALSE)
 
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 
 
-# Predict with linear weights and regularization
+# Predict with linear weights and manual regularization
 model=SVM.train(data.train,target.train,regular=0.1)
 
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 
+}
 }

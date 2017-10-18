@@ -14,16 +14,12 @@
   the third element specifies the number of parameters factorizing the third-order,
   ...,
   up to the tenth element specifying the number of parameters factorizing the tenth-order.
-   
-  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"}) is supported. 
-  Consequently, regularization is suggested in most of the cases.
-  Next steps are to implement the Monte Carlo Markov Chain method (\code{"mcmc"}) to simplify regularization.
-  Furthermore, the task classifiction (\code{"c"}) will be supported in the future.
+
 }
 
 \usage{
   HoFM.train(data, target, factors = c(1, 10, 5), intercept = T,
-  iter = 100, regular = 0, stdev = 0.1)
+  iter = 100, regular = NULL, stdev = 0.1)
 }
 
 \arguments{
@@ -51,6 +47,7 @@
   \item{regular}{
     \code{numeric}: regularization value for each order corresponding to factors. If one value, each order is regularized with this value, 
     otherwise each element of the vector specifies the regularization value of the corresponding order.
+    If regular is NULL, automatic regularization using Markov Chain Monte Carlo (MCMC) method is applied.
   }
   \item{stdev}{
     \code{numeric}: the standard deviation used to initialize the model parameters.
@@ -68,6 +65,7 @@
 }
 
 \examples{
+\dontrun{
 
 ### Example to illustrate the usage of the method
 ### Data set very small and not sparse, results not representative
@@ -88,6 +86,7 @@ target.test=Boston[-subset,ncol(Boston)]
 
 
 # Predict with 7 second-order and 2 third-order factors
+#  with MCMC regularization
 model=HoFM.train(data.train,target.train,c(1,7,2))
 
 # RMSE resulting from test data prediction
@@ -95,6 +94,7 @@ sqrt(mean((predict(model,data.test)-target.test)^2))
 
 
 # Predict with 10 second-order and 5 third-order factor
+#  with MCMC regularization
 model=HoFM.train(data.train,target.train)
 
 # RMSE resulting from test data prediction
@@ -102,10 +102,11 @@ sqrt(mean((predict(model,data.test)-target.test)^2))
 
 
 # Predict with 10 second-order and 5 third-order factor
-# and regulariztion
+#  with manual regularization
 model=HoFM.train(data.train,target.train,regular=0.1)
 
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 
+}
 }

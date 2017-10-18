@@ -14,7 +14,9 @@
   
   - second-order Factorization Machines [2] (\code{\link{FM.train}}), 
   
-  - and higher-order Factorization Machines [1] (\code{\link{HoFM.train}}).
+  - and higher-order Factorization Machines [1] (\code{\link{HoFM.train}}), 
+  
+  - and knowledge-extracting or adaptive-order Factorization Machines [3] (\code{\link{KnoFM.train}}).
   
   Further informations about Factorization Machines are provided by the papers in the references.
 }
@@ -27,15 +29,15 @@
   - \code{\link{FM.train}}: Method training a second-order Factorization Machine,
 
   - \code{\link{HoFM.train}}: Method training a higher-order Factorization Machine,
+
+  - \code{\link{KnoFM.train}}: Method training a knowledge-extracting or adaptive-order Factorization Machine,
   
   - \code{\link{predict.FMmodel}}: Predict Method for FMmodel Objects,
   
   - \code{\link{summary.FMmodel}} and \code{\link{print.FMmodel}}: Summary and Print Method for FMmodel Objects.
    
-  To date the learning method alternating least squares (\code{"als"}) and the task regression (\code{"r"}) is supported. 
-  Consequently, regularization is suggested in most of the cases.
-  Next steps are to implement the Monte Carlo Markov Chain method (\code{"mcmc"}) to simplify regularization.
-  Furthermore, the task classifiction (\code{"c"}) will be supported in the future.
+  Two learning methods are supported: coordinate descent (regularization suggested) and Markov Chain Monte Carlo (MCMC).
+  To date the task regression (\code{"r"}) is supported, the task classifiction (\code{"c"}) will be supported in the future.
 }
 
 \author{
@@ -45,7 +47,10 @@
 \references{
   [1] J. Knoll, Recommending with Higer-Order Factorization Machines, Research and Development in Intelligent Systems XXXIII, 2016.
   
-  [2] S. Rendle, Factorization Machines with libFM, ACM Transactions onIntelligent Systems and Technology, 3, 2012.
+  [2] S. Rendle, Factorization Machines with libFM, ACM Transactions on Intelligent Systems and Technology, 3, 2012.
+  
+  [3] J. Knoll , J. Stuebinger, and M. Grottke, Exploiting social media with higher-order Factorization Machines: Statistical arbitrage on high-frequency data of the S&P 500. FAU Discussion Papers in Economics, University of Erlangen-Nuernberg, 2017.
+  
 }
 
 \keyword{ package }
@@ -87,19 +92,41 @@ target.train=target[subset]
 target.test=target[-subset]
 
 # Predict ratings with Support Vector Machine with linear kernel
+# using MCMC learning method
 model=SVM.train(data.train,target.train)
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 
 # Predict ratings with second-order Factorization Machine 
-# with second-order 10 factors (default) and regularization
+# with second-order 10 factors (default) 
+# using coordinate descent learning method (regularization suggested)
 model=FM.train(data.train,target.train,regular=0.1)
+# RMSE resulting from test data prediction
+sqrt(mean((predict(model,data.test)-target.test)^2))
+
+# Predict ratings with second-order Factorization Machine 
+# with second-order 10 factors (default) 
+# using Markov Chain Monte Carlo learning method
+model=FM.train(data.train,target.train)
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 
 # Predict ratings with higher-order Factorization Machine 
 # with 3 second-order and 1 third-order factor and regularization
+# using coordinate descent learning method (regularization suggested)
 model=HoFM.train(data.train,target.train,c(1,3,1),regular=0.1)
+# RMSE resulting from test data prediction
+sqrt(mean((predict(model,data.test)-target.test)^2))
+
+# Predict ratings with higher-order Factorization Machine 
+# with 3 second-order and 1 third-order factor and regularization
+# using MCMC learning method
+model=HoFM.train(data.train,target.train,c(1,3,1))
+# RMSE resulting from test data prediction
+sqrt(mean((predict(model,data.test)-target.test)^2))
+
+# Predict ratings with adaptive-order Factorization Machine 
+model=KnoFM.train(data.train,target.train)
 # RMSE resulting from test data prediction
 sqrt(mean((predict(model,data.test)-target.test)^2))
 

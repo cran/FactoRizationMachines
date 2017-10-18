@@ -1,5 +1,5 @@
 FM.train <-
-function(data, target, factors=c(1,10), intercept=T, iter=100, regular=0, stdev=0.1){
+function(data, target, factors=c(1,10), intercept=T, iter=100, regular=NULL, stdev=0.1){
   
   object=list()
   if(length(factors)>2) object$vK=factors[1:2] else object$vK=factors

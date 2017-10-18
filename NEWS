@@ -1,0 +1,16 @@
+0.35
+ - Adaptive-order algorithm added
+ 
+0.25
+ - Learning method Markov Chain Monte Carlo (automatic regularization) added
+
+0.21
+ - Extension of highest potentially considered order from third to tenth order
+ - Bugfixes
+
+0.11
+ - Registration of native routines
+ - Performance improvements
+
+0.1
+ - Initial release

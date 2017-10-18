@@ -1,5 +1,5 @@
 SVM.train <-
-function(data, target, factors=1, intercept=T, iter=100, regular=0, stdev=0.1){
+function(data, target, factors=1, intercept=T, iter=100, regular=NULL, stdev=0.1){
 
   object=list()
   object$vK=factors[1]

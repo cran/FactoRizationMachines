@@ -10,6 +10,7 @@ function(object, newdata, truncate=T, ...){
   object$truncate=truncate
   
   prediction=predictFM(object)
+  # if(!is.null(object$mean)&!is.null(object$sd)) prediction=prediction/0.1*object$sd+object$mean
   
   return(prediction)
   
